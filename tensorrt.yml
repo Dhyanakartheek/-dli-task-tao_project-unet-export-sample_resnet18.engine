@@ -1,1 +1,21 @@
+name : TensorRT Workflow
 
+on:
+  push:
+
+jobs:
+  tensorrt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run:  |
+          pip install tensorrt
+          apt-get update && apt-get install -y cuda cudnn
+
+      - name: Run code
+        run:  |
+          python your_script_name.py
+    
